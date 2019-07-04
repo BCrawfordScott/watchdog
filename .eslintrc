@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "plugin:react",
+    "airbnb"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "jsx-a11y/label-has-for": 0,
+    "react/jsx-fragments": true
+  }
+}
