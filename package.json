@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --coverage",
+    "coverage": "open coverage/lcov-report/index.html",
     "start": "node app.js",
     "server": "nodemon app.js"
   },
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/BCrawfordScott/watchdog#readme",
   "dependencies": {
+    "@babel/core": "^7.5.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
@@ -47,10 +49,12 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "*.js"
+      "**/*.{js, jsx}"
     ],
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/coverage/",
+      "/keys/"
     ],
     "coverageThreshold": {
       "global": {
