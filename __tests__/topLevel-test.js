@@ -16,4 +16,8 @@ describe('Application', () => {
   it('Includes a README.md', () => {
     expect(fs.existsSync('./README.md')).toEqual(true);
   });
+
+  it('Includes the application', () => {
+    expect(fs.existsSync('./app.js')).toEqual(true);
+  })
 });
