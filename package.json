@@ -1,0 +1,19 @@
+{
+  "name": "watchdog",
+  "version": "1.0.0",
+  "description": "The team's best friend.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BCrawfordScott/watchdog.git"
+  },
+  "author": "Brian Crawford Scott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BCrawfordScott/watchdog/issues"
+  },
+  "homepage": "https://github.com/BCrawfordScott/watchdog#readme"
+}
