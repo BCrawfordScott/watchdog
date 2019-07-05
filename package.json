@@ -62,6 +62,7 @@
         "branches": 90,
         "functions": 90
       }
-    }
+    },
+    "testEnvironment": "node"
   }
 }

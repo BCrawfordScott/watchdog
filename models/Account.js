@@ -9,10 +9,12 @@ const AccountSchema = new Schema({
   admin: {
     type:[ObjectId],
     unique: true,
+    required: true,
   },
   holders: {
     type:[ObjectId],
     unique: true,
+    default: [],
   },
   photoURL: {
     type: String,

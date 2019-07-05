@@ -10,7 +10,9 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: true,
-    default: () => this.email.split("@")[0],
+    default: function() {
+      return this.email ? this.email.split("@")[0] : null
+    },
   },
   password: {
     type: String,
