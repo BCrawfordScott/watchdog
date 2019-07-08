@@ -1,5 +1,7 @@
+const { compare } = require('bcryptjs');
 const User = require('../models/User');
 const { securePassword } = require('../util/security');
+const keys = require('../keys/keys.js');
 
 module.exports = {
   register: function(req, res) {
@@ -15,7 +17,7 @@ module.exports = {
             photoUrl,
             accounts,
             password,
-          })
+          });
 
           securePassword(user.password, hash => {
             user.password = hash;
@@ -29,5 +31,25 @@ module.exports = {
         }
       }
     );
-  }
+  },
+  login: function(req, res) {
+    const { email, password } = req.body;
+    const authError = { auth: 'Invalid email of password' };
+
+    User.findOne({email})
+      .then(user => {
+        if (!user) {
+          return res.status(401).json(authError);
+        }
+
+        compare(password, user.password)
+          .then(isMatch => {
+            if(isMatch) {
+              res.json({ msg: 'Success' });
+            } else {
+              return res.status(401).json(authError);
+            }
+          });
+      });
+  },
 }
