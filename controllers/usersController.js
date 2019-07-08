@@ -1,14 +1,5 @@
-const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-
-const securePassword = (password, cb) => {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(password, salt, (err, hash)=> {
-      if(err) throw err;
-      cb(hash);
-    });
-  });
-}
+const { securePassword } = require('../util/security');
 
 module.exports = {
   register: function(req, res) {
