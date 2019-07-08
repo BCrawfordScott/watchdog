@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { 
   register,
+  login,
 } = require('../../../controllers/usersController');
 
 const tester = function(req, res) {
@@ -10,5 +11,6 @@ const tester = function(req, res) {
 
 router.get("/test", tester);
 router.post("/register", register);
+router.post("/login", login);
 
 module.exports = router;
