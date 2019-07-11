@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const router = require('./router');
 const winston = require('winston');
 const expressWinston = require('express-winston');
+const passport = require('passport');
 
 module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,6 +18,6 @@ module.exports = function(app) {
       winston.format.prettyPrint(),
     ),
   }));
-
+  app.use(passport.initialize());
   router(app);
 }
