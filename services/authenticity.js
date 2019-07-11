@@ -35,7 +35,11 @@ module.exports = {
       securePassword(user.password, hash => {
         user.password = hash;
         return user.save()
-          .then(user => res.json(user))
+          .then(user => {
+            const { id, email } = user;
+            const payload = { id, email };
+            assignToken(payload, res);
+          })
           .catch(err => {
             console.log(err);
             return res.status(422).json(err);
