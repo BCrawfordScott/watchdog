@@ -1,5 +1,5 @@
-const users = require('./routes/api/users');
-const accounts = require('./routes/api/accounts');
+const users = require('./api/users');
+const accounts = require('./api/accounts');
 
 const router = (app) => {
   app.get("/", (req, res) => res.send("Watchdog says, \"Woof!\""));

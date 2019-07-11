@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const { 
   register,
   login,
@@ -12,5 +13,12 @@ const tester = function(req, res) {
 router.get("/test", tester);
 router.post("/register", register);
 router.post("/login", login);
+
+// Testing //
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { id, username, email } = req.user;
+  res.json({ id, username, email });
+});
+// Testing //
 
 module.exports = router;

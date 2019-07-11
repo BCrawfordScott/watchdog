@@ -1,8 +1,9 @@
 const bodyParser = require('body-parser');
-const router = require('./router');
+const router = require('./routes/router');
 const winston = require('winston');
 const expressWinston = require('express-winston');
 const passport = require('passport');
+const { strategize } = require('./passportStrategy');
 
 module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,5 +20,6 @@ module.exports = function(app) {
     ),
   }));
   app.use(passport.initialize());
+  strategize(passport);
   router(app);
 }

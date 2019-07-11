@@ -21,7 +21,7 @@ const assignToken = function(payload, res) {
 module.exports = {
   registerUser: function (user, req, res) {
     if (user) {
-      return res.status(400).json({ email: 'That email is not available' })
+      return res.status(400).json({ email: 'That email is not available' });
     } else {
       const { email, username, password, photoUrl, accounts } = req.body;
       const user = new User({
