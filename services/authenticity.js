@@ -21,7 +21,6 @@ const assignToken = function(payload, res) {
 module.exports = {
   registerUser: function (user, req, res) {
     if (user) {
-      console.log(user);
       return res.status(400).json({ email: 'That email is not available' })
     } else {
       const { email, username, password, photoUrl, accounts } = req.body;
@@ -35,7 +34,7 @@ module.exports = {
 
       securePassword(user.password, hash => {
         user.password = hash;
-        user.save()
+        return user.save()
           .then(user => res.json(user))
           .catch(err => {
             console.log(err);
