@@ -12,4 +12,8 @@ module.exports = {
     const { email, password } = req.body;
     User.findOne({email}).then(user => loginUser(user, password, res));
   },
+  current: function (req, res) {
+    const { id, username, email } = req.user;
+    res.json({ id, username, email });
+  },
 }

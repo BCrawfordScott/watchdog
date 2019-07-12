@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 const { 
   register,
   login,
+  current,
 } = require('../../../controllers/usersController');
+const { authenticate } = require('../../../services/authenticity');
 
 const tester = function(req, res) {
   res.json({msg: "This is the user test route"});
@@ -13,12 +14,7 @@ const tester = function(req, res) {
 router.get("/test", tester);
 router.post("/register", register);
 router.post("/login", login);
+router.get('/current', authenticate, current);
 
-// Testing //
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { id, username, email } = req.user;
-  res.json({ id, username, email });
-});
-// Testing //
 
 module.exports = router;
