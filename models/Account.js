@@ -10,11 +10,13 @@ const AccountSchema = new Schema({
     type:[ObjectId],
     unique: true,
     required: true,
+    ref: 'users',
   },
   holders: {
     type:[ObjectId],
     unique: true,
     default: [],
+    ref: 'users',
   },
   photoURL: {
     type: String,
