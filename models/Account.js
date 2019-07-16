@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { ObjectId } = Schema;
+const { Types: { ObjectId } } = Schema;
 
 const AccountSchema = new Schema({
   name: {

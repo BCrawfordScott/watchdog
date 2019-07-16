@@ -30,7 +30,7 @@ module.exports = {
     User.findOne({email}).then(user => loginUser(user, password, res));
   },
   current: function (req, res) {
-    const { id, username, email } = req.user;
-    res.json({ id, username, email });
+    // const { id, username, email } = req.user;
+    res.json(req.user);
   },
 }
