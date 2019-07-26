@@ -39,9 +39,9 @@ module.exports = {
             user.accounts.push(account);
             user.save()
               .then(() => { console.log('saved user'); return res.json(account); })
-              .catch(err => res.status(400).json(err))
+              .catch(err => res.status(422).json(err))
             })
-          .catch(err => res.status(400).json(err))
+          .catch(err => res.status(422).json(err))
       });
   },
 }

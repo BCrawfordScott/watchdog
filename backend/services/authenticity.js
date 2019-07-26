@@ -74,6 +74,6 @@ module.exports = {
     const { user: {_id } } = req;
     User.findOne(_id)
       .then(user => cb(user))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(401).json(err));
   },
 };
