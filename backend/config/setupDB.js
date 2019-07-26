@@ -1,4 +1,4 @@
-const appKeys = require('../keys/keys');
+const appKeys = require('../../keys/keys');
 
 const dbURI = appKeys.mongoDBURI;
 

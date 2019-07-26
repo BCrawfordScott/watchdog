@@ -1,6 +1,6 @@
  # Status
 
- Planning
+ Initial MVPs: Users & Accounts
  
  # Watchdog 
 
