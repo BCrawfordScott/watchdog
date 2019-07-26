@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     type: String,
   },
   accounts: {
-    type: [ObjectId],
+    type: [{ type: ObjectId, ref: 'Account' }],
     required: true,
     default: [],
   }

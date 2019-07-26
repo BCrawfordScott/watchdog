@@ -68,5 +68,12 @@ module.exports = {
 
   authenticate: function(req, res, next) {
     passport.authenticate('jwt', { session: false })(req, res, next);
-  }
+  },
+
+  currentUser: function(req, res, cb) {
+    const { user: {_id } } = req;
+    User.findOne(_id)
+      .then(user => cb(user))
+      .catch(err => res.status(422).json(err));
+  },
 };

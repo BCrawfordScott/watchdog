@@ -7,23 +7,21 @@ const AccountSchema = new Schema({
     required: true,
   },
   admin: {
-    type:[ObjectId],
+    type:[{ type: ObjectId, ref: 'User' }],
     unique: true,
     required: true,
-    ref: 'users',
   },
   holders: {
-    type:[ObjectId],
+    type: [{ type: ObjectId, ref: 'User' }],
     unique: true,
     default: [],
-    ref: 'users',
   },
   photoURL: {
     type: String,
   }
 });
 
-AccountSchema.index({ name: 1, admin: 1 }, { unique: true });
+// AccountSchema.index({ name: 1, admin: 1 }, { unique: true });
 
 const Account = model('acount', AccountSchema);
 

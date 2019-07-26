@@ -1,6 +1,7 @@
 const { Types: { ObjectId } } = require('mongoose');
 const Account = require('../models/Account');
 const { validateAccountInput } = require('./validations/validations');
+const { currentUser } = require('../services/authenticity');
 
 
 module.exports = {
@@ -17,22 +18,30 @@ module.exports = {
       .catch(err => res.status(404).json({ noAccountFound: 'No account found with that id.'}))
   },
   createAccount: function(req, res) {
-    const { body, user: { _id } } = req;
+    const { body } = req;
     const { errors, isValid } = validateAccountInput(body);
 
     if (!isValid) {
       return res.status(400).json(errors);
     }
 
-    const { name } = body;
-    const newAccount = new Account({
-      name,
-      admin: [_id],
-    })
+    currentUser(req, res, user => {
+        console.log('found current user');
 
-    newAccount.save().then(
-      account => res.json(account),
-      err => res.status(422).json(err)
-    );
-  }
+        const { name } = body;
+        const newAccount = new Account({
+          name,
+        })
+        newAccount.admin.push(user);
+        newAccount.save()
+          .then(account => { 
+            console.log('created account');
+            user.accounts.push(account);
+            user.save()
+              .then(() => { console.log('saved user'); return res.json(account); })
+              .catch(err => res.status(400).json(err))
+            })
+          .catch(err => res.status(400).json(err))
+      });
+  },
 }
