@@ -2,7 +2,7 @@ const { compare } = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const { securePassword } = require('../util/security');
-const { jwtKey } = require('../keys/keys.js');
+const { jwtKey } = require('../../keys/keys.js');
 const User = require('../models/User');
 
 // Set the expiration time for the web token
