@@ -40,7 +40,7 @@
     "serve-favicon": "^2.5.0",
     "validator": "^11.1.0",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.12",
     "winston": "^3.2.1"
   },
   "devDependencies": {
